@@ -1,4 +1,67 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+  
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f2eb;
+  }
+
 h1 {
-    color: red;
-    text-align: center;
-}`
+    color: #815CAB;
+    font-size: 6vmin;
+    font-family: 'Rubik Bubbles', cursive;
+ 
+    
+}
+
+h2 { 
+    color: hsl(13, 29%, 37%) ;
+    font-size: 2.5vmin;
+    margin-top: -2vmin;
+    padding-bottom: 3vmin;
+    font-family: 'Concert One', cursive;
+
+}
+
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(4, 20vmin);
+    grid-template-rows: repeat(3, 20vmin);
+    background-color: #D1C0A8;
+    border-radius: 5px;
+    padding: 1vmin;
+    margin-top: -2vmin;
+  }
+
+  .cards {
+    margin: 1vmin;
+    border: 1vmin solid #815CAB;
+    border-radius: 10px;
+    background-color: darkgrey;
+    background-size: contain;
+  }
+  
+  button {
+    background-color: rgba(37, 152, 45, 0.5);
+    width: 10vmin;
+    height: 5vmin;
+    border: .3vmin solid rgb(88, 37, 1);
+    border-radius: 3px;
+    font-size: 3vmin;
+    color: #815CAB;
+    -webkit-text-stroke: 0.7px rgb(88, 37, 1);
+    font-family:'Concert One', cursive;
+    
+  }
+
+  img {
+    size: 30px;
+  }
