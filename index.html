@@ -13,65 +13,77 @@
 </head>
 <body>
     <h1>DogDog</h1>
-     <h2>Directions: Use your memory to match the cards. You only have 60 seconds!</h2>
+     <h2>Directions: Use your memory to match the cards. You only get 20 clicks!</h2>
 
    <div class="board">
-       <div class="cards" id="card0">
-        <img src="https://i.imgur.com/g9XoMnP.png">
+       <div class="cards" id="gr">
+        <img class="front" src="assets/gr.png">
+        <img class="back" src="assets/back-image.png">
        </div>
 
-       <div class="cards"id="card1"">
-        <img src="https://i.imgur.com/g9XoMnP.png">
+       <div class="cards" id="gr">
+        <img class="front" src="assets/gr.png">
+        <img class="back" src="assets/back-image.png">
        </div>
 
-       <div class="cards" id="card2">
-        <img src="https://i.imgur.com/g9XoMnP.png">
+       <div class="cards" id="bc">
+        <img class="front" src="assets/bc.png">
+        <img class="back" src="assets/back-image.png">
        </div>
 
-       <div class="cards"id="card3">
-        <img src="https://i.imgur.com/g9XoMnP.png">
+       <div class="cards"id="bc">
+        <img class="front" src="assets/bc.png">
+        <img class="back" src="assets/back-image.png">
        </div>
 
-       <div class="cards"id="card4">
-        <img src="https://i.imgur.com/g9XoMnP.png">
+       <div class="cards"id="gsd">
+        <img class="front" src="assets/gsd.png">
+        <img class="back" src="assets/back-image.png">
        </div>
 
-       <div class="cards"id="card5">
-        <img class="front-face" src="img/react.svg" alt="React">
+       <div class="cards"id="gsd">
+        <img class="front" src="assets/gsd.png">
+        <img class="back" src="assets/back-image.png">
        </div>
 
-       <div class="cards"id="card6">
-
+       <div class="cards"id="pb">
+        <img class="front" src="assets/pb.png">
+        <img class="back" src="assets/back-image.png">
        </div>
 
-       <div class="cards"id="card7">
-
+       <div class="cards"id="pb">
+        <img class="front" src="assets/pb.png">
+        <img class="back"src="assets/back-image.png">
        </div>
 
-       <div class="cards"id="card8">
-
+       <div class="cards"id="husky">
+        <img class="front" src="assets/husky.png">
+        <img class="back" src="assets/back-image.png">
        </div>
 
-       <div class="cards"id="card9">
-
+       <div class="cards"id="husky">
+        <img class="front" src="assets/husky.png">
+        <img class="back" src="assets/back-image.png">
        </div>
 
-       <div class="cards"id="card10">
-
+       <div class="cards"id="pug">
+        <img class="front" src="assets/pug.png">
+        <img class="back" src="assets/back-image.png">
        </div>
 
-       <div class="cards"id="card11">
-
+       <div class="cards"id="pug">
+        <img class="front" src="assets/pug.png">
+        <img class="back" src="assets/back-image.png">
        </div>
    </div>
 
-   <div id="time">Moves Left</div>
+   <div id="clicks"></div>
 
-   <div id="wrong-msg"></div>
+   <div id="wrong-msg" class="right-msg"> <h3></h3></div>
 
    <div id="result-msg"></div>
 
-   <button>PLAY</button>
+   <button>RESET</button>
 
 </body>
 </html>
