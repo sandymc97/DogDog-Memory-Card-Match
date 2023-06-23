@@ -13,8 +13,8 @@
 </head>
 <body>
     <h1>DogDog</h1>
-     <h2>Directions: Use your memory to match the cards. You only get 20 clicks!</h2>
-
+    <h2>Directions: Use your memory to match the cards. You only have 45 seconds!</h2>
+ <div class="for-timer">
    <div class="board">
        <div class="cards" id="gr">
         <img class="front" src="assets/gr.png">
@@ -76,14 +76,15 @@
         <img class="back" src="assets/back-image.png">
        </div>
    </div>
+         <div id="time"></div>
+</div>
+   
 
-   <div id="clicks"></div>
+   <div id="wrong-msg" class="right-msg"> <h4></h4></div>
 
-   <div id="wrong-msg" class="right-msg"> <h3></h3></div>
-
-   <div id="result-msg"></div>
-
-   <button>RESET</button>
-
+   <div id="results-msg"></div>
+   <button onClick="playAgain()">Play</button>
+  
+  
 </body>
 </html>
