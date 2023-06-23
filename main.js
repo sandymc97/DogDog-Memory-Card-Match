@@ -1,35 +1,25 @@
-
-// when the player picks a card or plays- initialize game
-// if all cards matched, you have a winner
-//if time runs out, you have a loser
-// button to reset game
-
-
-
-
-
-// declare variables 
 let isCardFlipped = false;
 let card1, card2;
 let pauseGame = false;
 let matchedCards = 0;
-
-const TIME_LIMIT = 45;
+const TIME_LIMIT = 40;
 let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
+let bark = new Audio('assets/bark.mp3')
+let win = new Audio('assets/win-sound.mp3')
+let lose = new Audio('assets/lose-sound.mp3')
 
-
-
-// reference html elements
 const cards = document.querySelectorAll('.cards');
 const wrongMessage = document.querySelector("#wrong-msg");
 const rightMessage = document.querySelector('.right-msg');
-const resultsMessage = document.querySelector('#results-msg');
-const play = document.querySelector("button")
+const wonMessage = document.querySelector('.won-msg');
+const lostMessage = document.querySelector('#lost-msg');
+const reset = document.querySelector("button")
 
 
-     //functions 
+
+
 function shuffleCards() {
     for (let i = 0; i < cards.length; i++) {
           let shuffle = Math.floor(Math.random() * 12);
@@ -42,7 +32,9 @@ function flipCards() {
     if (pauseGame === true){
     return }
       this.classList.add("flip-cards");
-      
+      cards.forEach(function (card){
+        card.removeEventListener("click",startTimer)
+    })
     if (isCardFlipped === false) {
         isCardFlipped = true;
         card1 = this;
@@ -53,8 +45,6 @@ function flipCards() {
     }
 }
 
-
-
 function unflipCards() {
       pauseGame = true;
       setTimeout(function() {
@@ -64,87 +54,68 @@ function unflipCards() {
       }, 1000);
  }
 
- function matchCheck() {
+function matchCheck() {
     if(card1.id === card2.id) {
+        bark.play()
         matchedCards++;
     card1.removeEventListener("click",flipCards);
     card2.removeEventListener("click",flipCards);
       rightMessage.innerHTML = 'Good Job!';
-      renderResults()
+      onWin()
     } else {
      unflipCards();
      wrongMessage.innerHTML = 'Wrong Card!';
   }
 }
 
-
-
-
-function renderResults() {
+function onWin() {
     if (matchedCards === 6 && timeLeft > 0) {
         wrongMessage.innerHTML = " ";
         rightMessage.innerHTML = " ";
-       resultsMessage.innerHTML = "You won!"
+       wonMessage.innerHTML = "You won!"
+       win.play()
        clearInterval(timerInterval);
-    } 
+      } 
     }
 
+function onTimesUp() {
+        wrongMessage.innerHTML = " ";
+        rightMessage.innerHTML = " ";
+            lostMessage.innerHTML =  "You lost!";
+            clearInterval(timerInterval);
+            lose.play();
+        cards.forEach(function (card){
+            card.removeEventListener("click",flipCards)
+        })
+    }
 
-
-function playAgain(){
+function resetGame(){
     window.location.reload();
   }
-  startTimer();
-
- //event listeners 
-     //add event listener to cards so they can flip
-     cards.forEach(function(card){
-        card.addEventListener("click",flipCards)
-    })
-    
-    //  play.addEventListener("click", startTimer)
-    // console.log(play)
-    
-      
 
    
    document.getElementById("time").innerHTML = `
    <div class="base-timer">
-     <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      
-         <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
-         <path
-           id="base-timer-path-remaining"
-           stroke-dasharray="283"
-           d="
-             M 50, 50
-             m -45, 0
-             a 45,45 0 1,0 90,0
-             a 45,45 0 1,0 -90,0
-           "
-         ></path>
-       </g>
-     </svg>
-     <span id="base-timer-label" class="base-timer__label">${formatTime(
+     <span id="timer" class="timer-text">${formatTime(
         timeLeft
       )}</span>
    </div>
    `;
    
+function formatTime(time) {
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+    if (seconds < 10) {
+      seconds = `0${seconds}`;
+    }
+    return `${minutes}:${seconds}`;
+  }
 
-   
-function onTimesUp() {
-    wrongMessage.innerHTML = " ";
-        rightMessage.innerHTML = " ";
-        resultsMessage.innerHTML = "You lost!"
-     clearInterval(timerInterval);
-   }
-   
 function startTimer() {
      timerInterval = setInterval(() => {
        timePassed += 1;
        timeLeft = TIME_LIMIT - timePassed;
-       document.getElementById("base-timer-label").innerHTML = formatTime(
+       document.getElementById("timer").innerHTML = formatTime(
          timeLeft
        );
        if (timeLeft === 0) {
@@ -153,16 +124,15 @@ function startTimer() {
      }, 1000);
    }
    
-function formatTime(time) {
-     const minutes = Math.floor(time / 60);
-     let seconds = time % 60;
-     if (seconds < 10) {
-       seconds = `0${seconds}`;
-     }
-     return `${minutes}:${seconds}`;
-   }
+
    
-   
+  cards.forEach(function (card){
+    card.addEventListener("click",startTimer)
+  })
+
+  cards.forEach(function (card){
+        card.addEventListener("click",flipCards)
+  })
    
    
    

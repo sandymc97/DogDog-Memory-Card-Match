@@ -10,10 +10,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Concert+One&family=Poller+One&family=Rubik+Bubbles&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="#">
 </head>
 <body>
     <h1>DogDog</h1>
-    <h2>Directions: Use your memory to match the cards. You only have 45 seconds!</h2>
+    <h2>Directions: Use your memory to match the cards. You only have 40 seconds!</h2>
  <div class="for-timer">
    <div class="board">
        <div class="cards" id="gr">
@@ -82,9 +83,9 @@
 
    <div id="wrong-msg" class="right-msg"> <h4></h4></div>
 
-   <div id="results-msg"></div>
-   <button onClick="playAgain()">Play</button>
+   <div id="lost-msg"><span class= "won-msg"></span></div>
   
+   <button onClick="resetGame()">RESET</button>
   
 </body>
 </html>
