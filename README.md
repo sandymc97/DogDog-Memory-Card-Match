@@ -36,6 +36,8 @@
   
   ☐ **Play Game**: Below is the link to the game. Directions: Click on the cards to flip them over and use your memory to match them in pairs.
   <br></br>
+  https://sandymc97.github.io/project1-game/
+  <br></br>
   <br></br>
   ☐ **Next Steps**: Planned Future Enhancements
   <br></br>
