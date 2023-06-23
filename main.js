@@ -30,15 +30,17 @@ function shuffleCards() {
 
 function flipCards() {
     if (pauseGame === true){
-    return }
+    return}
       this.classList.add("flip-cards");
-      cards.forEach(function (card){
-        card.removeEventListener("click",startTimer)
-    })
     if (isCardFlipped === false) {
         isCardFlipped = true;
         card1 = this;
+        cards.forEach(function (card){
+            card.removeEventListener("click",startTimer)
+        })
     } else {
+        if (this === card1){
+            return}
         isCardFlipped = false;
         card2 = this; 
         matchCheck();
